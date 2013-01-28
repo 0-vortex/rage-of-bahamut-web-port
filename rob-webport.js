@@ -14,7 +14,7 @@ var Rage = {
     top: $('div#top'),
     junk: ['> div.toppadding', // top spacing
             '> div.bottompadding', // bottom spacing
-    		'a[href="http://bahamut-i.cygames.jp/bahamut_n/gacha_box/index?hash=lg"]', // stupid spacers
+			'a[href="http://bahamut-i.cygames.jp/bahamut_n/gacha_box/index?hash=lg"]', // stupid spacers
             '> br', // * new lines
             '> a[href="http://bahamut-i.cygames.jp/bahamut_n/image_sp/ui/ui_line_footer.png"]', // bottom logo
             '> img[src="http://ava-a.mbga.jp/i/dot.gif"]'], // * transparent images
