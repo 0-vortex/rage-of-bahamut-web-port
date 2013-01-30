@@ -30,10 +30,10 @@ var Rage = {
     init: function () {
         Rage.myPageCheck()
             .removeJunk()
-        	.fixFont()
-        	.fixCss()
-        	.getStamina()
-        	.quest();
+            .fixFont()
+            .fixCss()
+            .getStamina()
+            .quest();
         
         console.log('Loaded script in ' + (new Date().getTime() - Rage.time) / 1000 + ' seconds');
     },
@@ -77,7 +77,7 @@ var Rage = {
         }
         
         return Rage;
-	},
+    },
 	
     removeJunk: function () {
         $(Rage.junk.join(','), Rage.top).remove();
