@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         vortex Rage of Bahamut web port
 // @namespace    http://vortex.re/
-// @version      0.4.2
+// @version      0.4.3
 // @description  Rage of Bahamut ios/android app web port
 // @match        http://bahamut-i.cygames.jp/bahamut_n/*
 // @copyright    2013+, Teodor Eugen Dutulescu
@@ -23,7 +23,7 @@ var Rage = {
     top: $('div#top'),
     junk: ['div.toppadding', // top spacing
            'div.bottompadding', // bottom spacing
-		   'a[href="http://bahamut-i.cygames.jp/bahamut_n/gacha_box/index?hash=lg"]', // stupid spacers
+           'a[href="http://bahamut-i.cygames.jp/bahamut_n/gacha_box/index?hash=lg"]', // stupid spacers
            //'br', // * new lines
            'img[src="http://ava-a.mbga.jp/i/dot.gif"]'], // * transparent images
     
@@ -89,7 +89,7 @@ var Rage = {
         WebFontConfig = {
             google: { families: [ escape(fontName) + '::latin' ] }
         };
-	var fontName = 'Roboto Condensed';
+		var fontName = 'Roboto Condensed';
         var font = document.createElement('link');
             font.type = 'text/css';
             font.href = 'http://fonts.googleapis.com/css?family=' + escape(fontName);
@@ -151,7 +151,7 @@ var Rage = {
                     }
                     
                     else {
-        		console.log('Sylvan jump ahead executed successfully !');
+        				console.log('Sylvan jump ahead executed successfully !');
                     }
                 }
             });
