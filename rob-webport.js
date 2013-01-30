@@ -29,7 +29,7 @@ var Rage = {
     
     init: function () {
         Rage.myPageCheck()
-			.removeJunk()
+            .removeJunk()
         	.fixFont()
         	.fixCss()
         	.getStamina()
@@ -64,12 +64,12 @@ var Rage = {
                            'img[src="http://bahamut-i.cygames.jp/bahamut_n/image_sp/ui/ui_line_menu_02.jpg"]', // quest notification bottom arrow
                            '> div:eq(4)', // * random card list
                            '> div:eq(5)', // * quest notification text
-						   '> div:eq(7)', // * card box ad
-                      	   '> div:eq(10)', // * invite friend ad 
-                      	   '> div:eq(11)', // * twitter ad
-                      	   '> div:eq(12)', // * tom ad
-                      	   '> div:eq(28)', // * push settings
-                      	   '> div:eq(29)'); // * copyright
+                           '> div:eq(7)', // * card box ad
+                           '> div:eq(10)', // * invite friend ad 
+                           '> div:eq(11)', // * twitter ad
+                           '> div:eq(12)', // * tom ad
+                           '> div:eq(28)', // * push settings
+                           '> div:eq(29)'); // * copyright
             
             window.setTimeout(function(){window.location.reload();}, timeout); // home page keep-alive
             
@@ -151,7 +151,7 @@ var Rage = {
                     }
                     
                     else {
-        				console.log('Sylvan jump ahead executed successfully !');
+                        console.log('Sylvan jump ahead executed successfully !');
                     }
                 }
             });
