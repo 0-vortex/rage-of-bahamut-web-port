@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         vortex Rage of Bahamut web port
 // @namespace    http://vortex.re/
-// @version      0.4.6
+// @version      0.4.7
 // @description  Rage of Bahamut ios/android app web port
 // @match        http://bahamut-i.cygames.jp/bahamut_n/*
 // @copyright    2013+, Teodor Eugen Dutulescu
@@ -55,14 +55,14 @@ var Rage = {
         bossPlay: /"bp":"(.*?)"/gi
     },
     data: {
-        questThreshHold: 100,
+        questThreshHold: 144,
         stamina: 0
     },
     uri: window.location.pathname.replace(/^\/bahamut_n\//gi, ''),
     top: $('div#top'),
     junk: ['div.toppadding', // top spacing
            'div.bottompadding', // bottom spacing
-    	   'a[href="http://bahamut-i.cygames.jp/bahamut_n/gacha_box/index?hash=lg"]', // stupid spacers
+		   'a[href="http://bahamut-i.cygames.jp/bahamut_n/gacha_box/index?hash=lg"]', // stupid spacers
            //'br', // * new lines
            'img[src="http://ava-a.mbga.jp/i/dot.gif"]'], // * transparent images
     
@@ -71,8 +71,7 @@ var Rage = {
         	.removeJunk()
         	.fixFont()
         	.fixCss()
-        	.getStamina()
-        	.quest();
+        	.getStamina();
         
         Rage.log('Loaded script in ' + (new Date().getTime() - Rage.time) / 1000 + ' seconds');
     },
@@ -102,18 +101,12 @@ var Rage = {
     	if (Rage.uri == "mypage") {
             var timer = new Date().getTime();
             var timeout = 300000;
-            
+            Rage.log($('> div:eq(4)', Rage.top));
             Rage.junk.push('a[href="http://bahamut-i.cygames.jp/bahamut_n/official/top/cards_introduction_5forms?card=0"]', // * x5 legendary ad
                            'img[src="http://bahamut-i.cygames.jp/bahamut_n/image_sp/ui/ui_line_kishidan.png"]', // "The Order" text
                            'img[src="http://bahamut-i.cygames.jp/bahamut_n/image_sp/ui/ui_line_menu_01.jpg"]', // quest notification upper arrow
                            'img[src="http://bahamut-i.cygames.jp/bahamut_n/image_sp/ui/ui_line_menu_02.jpg"]', // quest notification bottom arrow
-                           '> div:eq(4)', // * random card list
-                           '> div:eq(5)', // * quest notification text
-						   '> div:eq(7)', // * card box ad
-                      	   '> div:eq(10)', // * invite friend ad 
-                      	   '> div:eq(11)', // * twitter ad
-                      	   '> div:eq(12)', // * tom ad
-                      	   '> div:eq(28)', // * push settings
+                           'a[href*="http://bahamut-i.cygames.jp/bahamut_n/gacha/"]',
                       	   '> div:eq(29)'); // * copyright
             
             window.setTimeout(function(){window.location.reload();}, timeout); // home page keep-alive
@@ -125,11 +118,7 @@ var Rage = {
 	},
 	
     removeJunk: function () {
-        $(document).ready(function(){
-            console.log($(Rage.junk.join(','), Rage.top));
-            
-        	$(Rage.junk.join(','), Rage.top).remove();
-        });
+        $(Rage.junk.join(','), Rage.top).remove();
         
         return Rage;
     },
@@ -163,14 +152,18 @@ var Rage = {
             if (stamina[1] !== 'undefined') {
                 Rage.data.stamina = parseInt(stamina[1], 10);
                 
-                Rage.log('Current stamina: ' + Rage.data.stamina);
+                Rage.log('Current stamina: ' + Rage.data.stamina + ', ' + Rage.data.questThreshHold + ' needed for a clear !');
             }   
         }
         
         return Rage;
     },
     
-    quest: function () {
+    /**
+     * deprecated
+     * 
+     */ 
+    sylvanQuest: function () {
         if (Rage.data.stamina >= Rage.data.questThreshHold) {
             Rage.log('Executing one jump-ahead');
             
